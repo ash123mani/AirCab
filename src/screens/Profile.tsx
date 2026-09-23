@@ -16,32 +16,35 @@ export function ProfileScreen(props: {
   return (
     <Screen>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Heading>Profile</Heading>
-        <Sub>Everything stays on this device.</Sub>
+        <Text style={{...font.board, color: colors.amber, marginBottom: spacing.sm}}>
+          CREW RECORD · LOCAL ONLY
+        </Text>
+        <Heading>You</Heading>
+        <Sub>Nothing here ever leaves this phone.</Sub>
         <Card>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Avatar name={props.me.name} size={56} />
             <View style={{marginLeft: spacing.md, flex: 1}}>
               <Text style={{...font.title, color: colors.ink}}>{props.me.name}</Text>
-              <Text style={{...font.caption, color: colors.muted, marginTop: 2}}>
-                {props.dest ? `${props.dest.city} → ${props.dest.area}` : 'Destination not set'}
+              <Text style={{...font.board, color: colors.muted, fontSize: 12, marginTop: 4}}>
+                {props.dest ? `${props.dest.city.toUpperCase()} → ${props.dest.area.toUpperCase()}` : 'NO ROUTE FILED'}
               </Text>
             </View>
           </View>
           <View style={{marginTop: spacing.md, alignSelf: 'flex-start'}}>
             <Badge
               dot={props.online ? 'green' : 'grey'}
-              label={props.online ? `Connected to ${props.peerCount} passengers` : 'Offline · searching'}
+              label={props.online ? `Online · ${props.peerCount} linked` : 'Offline · scanning'}
             />
           </View>
         </Card>
-        <SectionTitle>PRIVACY</SectionTitle>
+        <SectionTitle>BLACK BOX</SectionTitle>
         <Card>
           <Text style={{...font.body, color: colors.inkSoft}}>
-            Only your destination area is ever shared. No address, GPS, phone, or email.
+            Only your destination sector is ever broadcast. No address, GPS, phone, or email.
           </Text>
-          <Button title="Disconnect from nearby" variant="secondary" onPress={props.onDisconnect} />
-          <Button title="Delete local data" variant="danger" onPress={props.onWipe} />
+          <Button title="Cut all frequencies" variant="secondary" onPress={props.onDisconnect} />
+          <Button title="Wipe black box" variant="danger" onPress={props.onWipe} />
         </Card>
         <View style={{height: spacing.xxxl}} />
       </ScrollView>

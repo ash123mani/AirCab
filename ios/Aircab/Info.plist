@@ -52,6 +52,10 @@
 		<string>Inter-SemiBold.otf</string>
 		<string>Inter-Bold.otf</string>
 		<string>Inter-ExtraBold.otf</string>
+		<string>IBMPlexMono-Regular.ttf</string>
+		<string>IBMPlexMono-Medium.ttf</string>
+		<string>IBMPlexMono-SemiBold.ttf</string>
+		<string>IBMPlexMono-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

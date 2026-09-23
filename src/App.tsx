@@ -1,7 +1,7 @@
 // Aircab root: smallest end-to-end flow —
 // set destination → discover → group by direction → join/create → chat → offline exchange.
 import React, {useEffect, useMemo, useRef, useState} from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import {generateIdentity, Identity} from './core/identity';
 import {Peer} from './core/matching';
 import {createGroup, Group, joinGroup, leaveGroup, MAX_GROUP_SIZE} from './core/groups';
@@ -178,7 +178,8 @@ export default function App() {
   const visiblePeers = peers.filter(p => !blocked.includes(p.id));
 
   return (
-    <SafeAreaView style={s.root}>
+    <SafeAreaView style={[s.root, {backgroundColor: '#0B0E11'}]}>
+      <StatusBar barStyle="light-content" />
       {route === 'welcome' && <WelcomeScreen onStart={() => setRoute('setup')} />}
       {route === 'setup' && <SetupScreen name={me.name} onDone={completeSetup} />}
       {route === 'nearby' && dest && (

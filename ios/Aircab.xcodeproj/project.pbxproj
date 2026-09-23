@@ -22,6 +22,10 @@
 		A1BCAB510000000000000007 /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A1BCAB520000000000000007 /* Inter-SemiBold.otf */; };
 		A1BCAB510000000000000008 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A1BCAB520000000000000008 /* Inter-Bold.otf */; };
 		A1BCAB510000000000000009 /* Inter-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A1BCAB520000000000000009 /* Inter-ExtraBold.otf */; };
+		A1BCAB530000000000000010 /* IBMPlexMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1BCAB540000000000000010 /* IBMPlexMono-Regular.ttf */; };
+		A1BCAB530000000000000011 /* IBMPlexMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1BCAB540000000000000011 /* IBMPlexMono-Medium.ttf */; };
+		A1BCAB530000000000000012 /* IBMPlexMono-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1BCAB540000000000000012 /* IBMPlexMono-SemiBold.ttf */; };
+		A1BCAB530000000000000013 /* IBMPlexMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1BCAB540000000000000013 /* IBMPlexMono-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,10 @@
 		A1BCAB520000000000000007 /* Inter-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Inter-SemiBold.otf; path = Aircab/Inter-SemiBold.otf; sourceTree = "<group>"; };
 		A1BCAB520000000000000008 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Inter-Bold.otf; path = Aircab/Inter-Bold.otf; sourceTree = "<group>"; };
 		A1BCAB520000000000000009 /* Inter-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Inter-ExtraBold.otf; path = Aircab/Inter-ExtraBold.otf; sourceTree = "<group>"; };
+		A1BCAB540000000000000010 /* IBMPlexMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IBMPlexMono-Regular.ttf; path = Aircab/IBMPlexMono-Regular.ttf; sourceTree = "<group>"; };
+		A1BCAB540000000000000011 /* IBMPlexMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IBMPlexMono-Medium.ttf; path = Aircab/IBMPlexMono-Medium.ttf; sourceTree = "<group>"; };
+		A1BCAB540000000000000012 /* IBMPlexMono-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IBMPlexMono-SemiBold.ttf; path = Aircab/IBMPlexMono-SemiBold.ttf; sourceTree = "<group>"; };
+		A1BCAB540000000000000013 /* IBMPlexMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IBMPlexMono-Bold.ttf; path = Aircab/IBMPlexMono-Bold.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -109,6 +117,10 @@
 				A1BCAB520000000000000007 /* Inter-SemiBold.otf */,
 				A1BCAB520000000000000008 /* Inter-Bold.otf */,
 				A1BCAB520000000000000009 /* Inter-ExtraBold.otf */,
+				A1BCAB540000000000000010 /* IBMPlexMono-Regular.ttf */,
+				A1BCAB540000000000000011 /* IBMPlexMono-Medium.ttf */,
+				A1BCAB540000000000000012 /* IBMPlexMono-SemiBold.ttf */,
+				A1BCAB540000000000000013 /* IBMPlexMono-Bold.ttf */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -272,6 +284,10 @@
 				A1BCAB510000000000000007 /* Inter-SemiBold.otf in Resources */,
 				A1BCAB510000000000000008 /* Inter-Bold.otf in Resources */,
 				A1BCAB510000000000000009 /* Inter-ExtraBold.otf in Resources */,
+				A1BCAB530000000000000010 /* IBMPlexMono-Regular.ttf in Resources */,
+				A1BCAB530000000000000011 /* IBMPlexMono-Medium.ttf in Resources */,
+				A1BCAB530000000000000012 /* IBMPlexMono-SemiBold.ttf in Resources */,
+				A1BCAB530000000000000013 /* IBMPlexMono-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

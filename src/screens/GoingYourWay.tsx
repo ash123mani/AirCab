@@ -1,9 +1,9 @@
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
-import {Button, Card, Chip, Heading, ListRow, Screen, SectionTitle, Sub, Divider} from '../design/components';
+import {Avatar, Button, Card, Chip, Heading, Screen, SectionTitle, Sub} from '../design/components';
 import {groupByDirection, Peer} from '../core/matching';
 import type {Destination} from '../data/cities';
-import {colors, font, radius, spacing} from '../design/tokens';
+import {colors, font, spacing} from '../design/tokens';
 
 export function GoingYourWayScreen(props: {
   peers: Peer[];
@@ -14,41 +14,55 @@ export function GoingYourWayScreen(props: {
   return (
     <Screen>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Heading>People going your way</Heading>
-        <Sub>Airport → grouped by destination area</Sub>
+        <Text style={{...font.board, color: colors.amber, marginBottom: spacing.sm}}>
+          STEP 03 · OUTBOUND ROUTES
+        </Text>
+        <Heading>Going your way</Heading>
+        <Sub>Every route leaves the airport. Find yours.</Sub>
         <Card>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <View style={{width: 12, height: 12, borderRadius: 6, backgroundColor: colors.brand}} />
-            <Text style={{...font.bodyStrong, color: colors.ink, marginLeft: spacing.sm}}>Airport</Text>
+            <View style={{width: 12, height: 12, borderRadius: 6, backgroundColor: colors.amber}} />
+            <Text style={{...font.boardBig, color: colors.ink, marginLeft: spacing.sm}}>AIRPORT</Text>
           </View>
-          {buckets.map(b => (
+          <View style={{marginLeft: 5, marginTop: 4, marginBottom: 4, width: 2, height: 14, backgroundColor: colors.line}} />
+          {buckets.length === 0 && (
+            <Text style={{...font.body, color: colors.muted}}>No routes on the board yet.</Text>
+          )}
+          {buckets.map((b, bi) => (
             <View key={`${b.city}${b.area}`}>
-              <View
-                style={{
-                  marginTop: spacing.md,
-                  paddingLeft: spacing.md,
-                  borderLeftWidth: 3,
-                  borderLeftColor: b.sameWay ? colors.brand : colors.line,
-                  borderRadius: 2,
-                }}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                  <Text style={{...font.bodyStrong, color: colors.ink}}>
-                    {b.area} · {b.peers.length}
+              <View style={{flexDirection: 'row'}}>
+                <View style={{alignItems: 'center', marginRight: spacing.md}}>
+                  <View
+                    style={{
+                      width: 12, height: 12, borderRadius: 6, marginTop: 4,
+                      backgroundColor: b.sameWay ? colors.amber : colors.faint,
+                    }}
+                  />
+                  {bi < buckets.length - 1 && (
+                    <View style={{width: 2, flex: 1, minHeight: 30, backgroundColor: colors.line, marginVertical: 4}} />
+                  )}
+                </View>
+                <View style={{flex: 1, paddingBottom: spacing.lg}}>
+                  <View style={{flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap'}}>
+                    <Text style={{...font.title, color: colors.ink}}>{b.area}</Text>
+                    <View style={{width: spacing.sm}} />
+                    {b.sameWay ? <Chip label="YOUR ROUTE" tone="brand" /> : <Chip label={`${b.peers.length} ABOARD`} tone="neutral" />}
+                  </View>
+                  <Text style={{...font.board, color: colors.faint, fontSize: 11, marginTop: 4}}>
+                    {b.city.toUpperCase()} SECTOR
                   </Text>
-                  <View style={{width: spacing.sm}} />
-                  {b.sameWay ? <Chip label="Your way" tone="brand" /> : <Chip label={b.city} tone="neutral" />}
-                </View>
-                <View style={{marginTop: spacing.sm, borderRadius: radius.md, backgroundColor: colors.bg, paddingHorizontal: spacing.md, paddingVertical: spacing.xs}}>
-                  {b.peers.map((p, i) => (
-                    <View key={p.id}>
-                      <ListRow name={p.name} detail={`→ ${p.destination.area}`} />
-                      {i < b.peers.length - 1 && <Divider />}
-                    </View>
-                  ))}
-                </View>
-                <View style={{marginTop: spacing.sm}}>
+                  <View style={{flexDirection: 'row', marginTop: spacing.sm}}>
+                    {b.peers.slice(0, 4).map(p => (
+                      <View key={p.id} style={{marginRight: -8}}>
+                        <Avatar name={p.name} size={32} />
+                      </View>
+                    ))}
+                    <Text style={{...font.caption, color: colors.muted, marginLeft: spacing.lg, alignSelf: 'center'}}>
+                      {b.peers.map(p => p.name.split(' ')[0]).join(' · ')}
+                    </Text>
+                  </View>
                   <Button
-                    title={b.sameWay ? `Join ${b.area} group` : `Join ${b.area} anyway`}
+                    title={b.sameWay ? `Board ${b.area} group` : `Board anyway`}
                     variant={b.sameWay ? 'primary' : 'secondary'}
                     onPress={() => props.onJoinArea(b.city, b.area, b.peers.map(p => p.id))}
                   />
@@ -57,9 +71,9 @@ export function GoingYourWayScreen(props: {
             </View>
           ))}
         </Card>
-        <SectionTitle>TIP</SectionTitle>
+        <SectionTitle>BOARDING RULES</SectionTitle>
         <Text style={{...font.caption, color: colors.muted}}>
-          Groups hold max 4 people. You can join several heading the same way.
+          Max 4 per group. You may hold several passes on the same heading.
         </Text>
         <View style={{height: spacing.xxxl}} />
       </ScrollView>

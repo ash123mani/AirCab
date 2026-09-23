@@ -3,7 +3,7 @@ import {Pressable, ScrollView, Text, TextInput, View} from 'react-native';
 import {Badge, Heading, Screen, SendButton} from '../design/components';
 import type {ChatMessage} from '../core/chat';
 import {Group, groupLabel} from '../core/groups';
-import {colors, font, radius, shadows, spacing} from '../design/tokens';
+import {colors, font, radius, spacing} from '../design/tokens';
 
 function statusMark(s: ChatMessage['status']): string {
   return s === 'delivered' ? '✓✓' : s === 'sent' ? '✓' : s === 'failed' ? '!' : '…';
@@ -21,30 +21,31 @@ export function ChatScreen(props: {
   return (
     <Screen>
       <Pressable onPress={props.onBack} hitSlop={12}>
-        <Text style={{...font.bodyStrong, color: colors.brandDeep}}>‹ Groups</Text>
+        <Text style={{...font.board, color: colors.amber, fontSize: 12}}>← ALL PASSES</Text>
       </Pressable>
       <View style={{height: spacing.sm}} />
       <Heading>{groupLabel(props.group)}</Heading>
       <View style={{marginBottom: spacing.md, alignSelf: 'flex-start'}}>
         <Badge
           dot={props.online ? 'green' : 'grey'}
-          label={props.online ? `Connected · ${props.group.memberIds.length}/4` : 'Offline · messages send on reconnect'}
+          label={props.online ? `Live · ${props.group.memberIds.length}/4 aboard` : 'Holding · sends on reconnect'}
         />
       </View>
       <View
         style={{
-          flexDirection: 'row', alignItems: 'center', backgroundColor: colors.card,
-          borderRadius: radius.lg, borderWidth: 1, borderColor: colors.lineSoft,
+          backgroundColor: colors.surface,
+          borderRadius: radius.sm,
+          borderWidth: 1, borderColor: colors.line,
           paddingHorizontal: spacing.md, paddingVertical: spacing.sm, marginBottom: spacing.md,
         }}>
-        <Text style={{...font.caption, color: colors.muted}} numberOfLines={1}>
-          {Object.values(props.group.memberNames).join('  ·  ')}
+        <Text style={{...font.board, color: colors.muted, fontSize: 11}} numberOfLines={1}>
+          {Object.values(props.group.memberNames).join(' · ').toUpperCase()}
         </Text>
       </View>
       <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
         {props.messages.length === 0 && (
           <Text style={{...font.body, color: colors.faint, textAlign: 'center', marginTop: spacing.xl}}>
-            Say hello — coordinate where to meet.
+            Frequency open. Say where to meet.
           </Text>
         )}
         {props.messages.map(m => {
@@ -54,22 +55,23 @@ export function ChatScreen(props: {
               key={m.id}
               style={{
                 alignSelf: mine ? 'flex-end' : 'flex-start',
-                backgroundColor: mine ? colors.brand : colors.card,
+                backgroundColor: mine ? colors.amber : colors.surface,
                 borderWidth: mine ? 0 : 1,
-                borderColor: colors.lineSoft,
-                borderRadius: radius.lg,
-                borderBottomRightRadius: mine ? 6 : radius.lg,
-                borderBottomLeftRadius: mine ? radius.lg : 6,
+                borderColor: colors.line,
+                borderRadius: radius.md,
+                borderBottomRightRadius: mine ? 4 : radius.md,
+                borderBottomLeftRadius: mine ? radius.md : 4,
                 paddingHorizontal: spacing.md,
                 paddingVertical: spacing.sm,
                 marginBottom: spacing.sm,
                 maxWidth: '84%',
-                ...(mine ? shadows.button : shadows.card),
               }}>
-              {!mine && <Text style={{...font.caption, color: colors.brandDeep, fontWeight: '800'}}>{m.senderName}</Text>}
-              <Text style={{...font.body, color: mine ? colors.white : colors.ink}}>{m.text}</Text>
-              <Text style={{...font.caption, fontSize: 11, color: mine ? '#A6A6A6' : colors.faint, marginTop: 2}}>
-                {new Date(m.createdAt).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'})} · {statusMark(m.status)}
+              {!mine && (
+                <Text style={{...font.board, color: colors.amber, fontSize: 11}}>{m.senderName.toUpperCase()}</Text>
+              )}
+              <Text style={{...font.body, color: mine ? colors.amberInk : colors.ink}}>{m.text}</Text>
+              <Text style={{...font.board, fontSize: 10, color: mine ? '#6B4E12' : colors.faint, marginTop: 3}}>
+                {new Date(m.createdAt).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: false})} · {statusMark(m.status)}
               </Text>
             </View>
           );
@@ -80,10 +82,10 @@ export function ChatScreen(props: {
         <TextInput
           value={draft}
           onChangeText={setDraft}
-          placeholder="Message the group…"
+          placeholder="Transmit to group…"
           placeholderTextColor={colors.faint}
           style={{
-            flex: 1, backgroundColor: colors.card, borderWidth: 1.5, borderColor: colors.line,
+            flex: 1, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.line,
             borderRadius: radius.pill, paddingHorizontal: 18, paddingVertical: 13,
             ...font.body, color: colors.ink, marginRight: spacing.sm,
           }}
