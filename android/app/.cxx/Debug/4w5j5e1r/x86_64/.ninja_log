@@ -1,0 +1,8 @@
+# ninja log v5
+11	56	1790176380154665458	build.ninja	ca60c10d1515f9b6
+1	15	0	/Users/mani/Documents/studio/aircab/android/app/.cxx/Debug/4w5j5e1r/x86_64/CMakeFiles/cmake.verify_globs	46e439e45da2d9ac
+8	1237	1790175981991908124	CMakeFiles/appmodules.dir/Users/mani/Documents/studio/aircab/android/app/build/generated/autolinking/src/main/jni/autolinking.cpp.o	8c11ce29402cfb43
+8	1383	1790175982138298541	CMakeFiles/appmodules.dir/OnLoad.cpp.o	e69510ebb0b90693
+1383	1459	1790175982221731458	/Users/mani/Documents/studio/aircab/android/app/build/intermediates/cxx/Debug/4w5j5e1r/obj/x86_64/libappmodules.so	c1df36ff5eb38926
+1	11	0	/Users/mani/Documents/studio/aircab/android/app/.cxx/Debug/4w5j5e1r/x86_64/CMakeFiles/cmake.verify_globs	46e439e45da2d9ac
+0	16	0	/Users/mani/Documents/studio/aircab/android/app/.cxx/Debug/4w5j5e1r/x86_64/CMakeFiles/cmake.verify_globs	46e439e45da2d9ac

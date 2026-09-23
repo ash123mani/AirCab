@@ -1,0 +1,31 @@
+{
+  "name": "aircab",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Aircab — offline-first peer-to-peer airport companion. Find people around you who are going your way.",
+  "scripts": {
+    "start": "react-native start",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "lint": "eslint src __tests__ --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-native": "0.76.5"
+  },
+  "devDependencies": {
+    "@react-native-community/cli": "15.0.1",
+    "@react-native/metro-config": "^0.76.5",
+    "@types/jest": "^29.5.14",
+    "@types/react": "^18.3.12",
+    "jest": "^29.7.0",
+    "typescript": "^5.6.3"
+  },
+  "jest": {
+    "testMatch": [
+      "<rootDir>/__tests__/**/*.test.ts"
+    ]
+  }
+}
